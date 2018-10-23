@@ -1,0 +1,24 @@
+.playArea {
+    width: 500px;
+    height: 500px;
+    background-color: rgb(77, 77, 247);
+}
+
+.clouds {
+    width: 500px;
+    height: 100px;
+    background-color: grey;
+}
+
+.ground {
+    position: relative;
+    top: 300px;
+    width: 500px;
+    height: 100px;
+    background-color: green;
+}
+
+.user {
+    width: 60px;
+    height: 60px;
+}
