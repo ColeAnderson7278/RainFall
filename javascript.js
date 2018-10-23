@@ -26,11 +26,13 @@ class RainFall {
     }
 
     moveLeft() {
-        this.player.x -= 20;
+        if (this.player.x > 100) {
+            this.player.x -= 20;
+        }
     }
 
     moveRight() {
-        this.player.x += 20;
+        if (this.player.x < 560) this.player.x += 20;
     }
 
     isPlayerHit() {
