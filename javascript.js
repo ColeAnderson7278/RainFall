@@ -26,22 +26,14 @@ class RainFall {
     }
 
     moveLeft() {
-        if (this.player.x > 100) {
-            this.player.x -= 20;
+        if (this.player.x > 90) {
+            this.player.x -= 5;
         }
     }
 
     moveRight() {
-        if (this.player.x < 560) this.player.x += 20;
-    }
-
-    isPlayerHit() {
-        return this.rainDrops.some(d => d.x === this.player.x && d.y === 0);
-    }
-
-    dropRainDrops() {
-        for (const rainDrop in this.rainDrops) {
-            rainDrop.x -= 5;
+        if (this.player.x < 560) {
+            this.player.x += 5;
         }
     }
 
@@ -72,25 +64,54 @@ document.addEventListener("keypress", function(event) {
     }
 });
 
-function tick() {
-    updatePlayerLocation();
-}
-
-setInterval(tick, 25);
-
 function updateRain() {
+    document.querySelector(".sky").innerHTML = "";
     for (var rainDrop of newGame.rainDrops) {
         shownDrop = `<span class="rain" style="left: ${rainDrop.x}px; top: ${
             rainDrop.y
         }px;"></span>`;
-        console.log(shownDrop);
         document
             .querySelector(".sky")
             .insertAdjacentHTML("afterbegin", shownDrop);
     }
 }
 
-updateRain();
+function dropRain() {
+    for (var rainDrop of newGame.rainDrops) {
+        rainDrop.y += 5;
+    }
+}
+
+function hitCheck() {
+    for (var rainDrop of newGame.rainDrops) {
+        if (rainDrop.y === 260) {
+            if (
+                rainDrop.x <= newGame.player.x - 50 &&
+                rainDrop.x >= newGame.player.x - 80
+            ) {
+                alert("You've losed");
+            }
+        }
+    }
+}
+
+function rainCheck() {
+    for (var rainDrop of newGame.rainDrops) {
+        if (rainDrop.y === 280) {
+            newGame.generateRainDrops();
+        }
+    }
+}
+
+function tick() {
+    rainCheck();
+    hitCheck();
+    dropRain();
+    updatePlayerLocation();
+    updateRain();
+}
+
+setInterval(tick, 30);
 
 // class DOMRainFall {
 //     constructor(rootSelector) {
