@@ -20,8 +20,8 @@ class RainFall {
 
     generateRainDrop() {
         this.rainDrops.push({
-            x: Math.floor(Math.random() * 100),
-            y: 100
+            x: Math.floor(Math.random() * 515),
+            y: 0
         });
     }
 
@@ -77,6 +77,20 @@ function tick() {
 }
 
 setInterval(tick, 25);
+
+function updateRain() {
+    for (var rainDrop of newGame.rainDrops) {
+        shownDrop = `<span class="rain" style="left: ${rainDrop.x}px; top: ${
+            rainDrop.y
+        }px;"></span>`;
+        console.log(shownDrop);
+        document
+            .querySelector(".sky")
+            .insertAdjacentHTML("afterbegin", shownDrop);
+    }
+}
+
+updateRain();
 
 // class DOMRainFall {
 //     constructor(rootSelector) {

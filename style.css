@@ -18,10 +18,14 @@ body {
 }
 
 .rain {
-    position: relative;
+    position: absolute;
     background-color: lightblue;
     width: 5px;
     height: 20px;
+}
+
+.sky {
+    position: relative;
 }
 
 .clouds {
