@@ -49,3 +49,13 @@ body {
     width: 60px;
     height: 60px;
 }
+
+.startButton {
+    background-color: rgb(243, 243, 158);
+}
+
+.startButtonText {
+    font-family: "Kranky";
+    color: blue;
+    text-shadow: 2px 2px rgb(147, 147, 252);
+}
