@@ -7,20 +7,20 @@ class RainFall {
 
     initializePlayer() {
         this.player = {
-            x: 240
+            x: 220
         };
     }
 
     generateRainDrops() {
         this.rainDrops = [];
-        for (let i = 0; i < 1; i++) {
+        for (let i = 0; i < 10; i++) {
             this.generateRainDrop();
         }
     }
 
     generateRainDrop() {
         this.rainDrops.push({
-            x: Math.floor(Math.random() * 515),
+            x: Math.floor(Math.random() * 480),
             y: 0
         });
     }
@@ -32,7 +32,7 @@ class RainFall {
     }
 
     moveRight() {
-        if (this.player.x < 480) {
+        if (this.player.x < 440) {
             this.player.x += 5;
         }
     }
@@ -84,13 +84,17 @@ function dropRain() {
 
 function hitCheck() {
     for (var rainDrop of newGame.rainDrops) {
-        if (rainDrop.y === 260) {
+        if (rainDrop.y === 240) {
             if (
                 // console.log(rainDrop.x, newGame.player.x + 20)
-                rainDrop.x <= newGame.player.x + 35 &&
-                rainDrop.x >= newGame.player.x + 15
+                rainDrop.x <= newGame.player.x + 45 &&
+                rainDrop.x >= newGame.player.x + 5
             ) {
-                alert("Game Over");
+                alert(
+                    `   Game Over\nYour Score Was:\n       ${
+                        document.querySelector(".userScore").innerText
+                    }`
+                );
                 document.location.reload();
             }
         }
@@ -105,16 +109,21 @@ function rainCheck() {
     }
 }
 
+function addToScore() {
+    var score = document.querySelector(".userScore");
+    score.innerText = Number(score.innerText) + 10;
+}
+
 function tick() {
     rainCheck();
     hitCheck();
     dropRain();
     updatePlayerLocation();
     updateRain();
+    addToScore();
 }
 
-document.querySelector(".startButton").addEventListener("click", function() {
-    var startButton = document.querySelector(".startButton");
-    startButton.setAttribute("disabled", "disabled");
-    setInterval(tick, 50);
+document.querySelector(".gameContainer").addEventListener("click", function() {
+    document.querySelector(".startText").innerHTML = "";
+    setInterval(tick, 30);
 });
