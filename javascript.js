@@ -123,7 +123,11 @@ function tick() {
     addToScore();
 }
 
-document.querySelector(".gameContainer").addEventListener("click", function() {
+function runNewGame() {
+    var container = document.querySelector(".gameContainer");
     document.querySelector(".startText").innerHTML = "";
     setInterval(tick, 30);
-});
+    container.removeEventListener("click", runNewGame);
+}
+
+document.querySelector(".gameContainer").addEventListener("click", runNewGame);
