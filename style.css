@@ -67,3 +67,38 @@ body {
     font-weight: bold;
     padding-left: 5px;
 }
+
+.modal-header {
+    background-color: rgb(243, 243, 158);
+    border-color: red;
+    display: flex;
+    justify-content: center;
+    font-family: "Kranky";
+    color: red;
+}
+
+.modal-body {
+    background-color: rgb(243, 243, 158);
+    display: flex;
+    justify-content: center;
+    font-size: x-large;
+    font-family: "Kranky";
+    font-weight: bold;
+}
+
+.modal-footer {
+    display: flex;
+    justify-content: center;
+    background-color: rgb(243, 243, 158);
+    border-color: rgb(243, 243, 158);
+}
+
+.modalButton {
+    background-color: blue;
+    color: white;
+}
+
+.finalScore {
+    color: blue;
+    padding-left: 10px;
+}

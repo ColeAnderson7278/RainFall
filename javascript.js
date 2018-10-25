@@ -84,23 +84,31 @@ function dropRain() {
     }
 }
 
+function callModal() {
+    var finalScore = document.querySelector(".finalScore");
+    var userScore = document.querySelector(".userScore").innerText;
+    finalScore.innerText = userScore;
+    $("#myModal")
+        .modal("show")
+        .stop();
+}
+
 function hitCheck() {
     for (var rainDrop of newGame.rainDrops) {
         if (rainDrop.y === 240) {
             if (
-                rainDrop.x <= newGame.player.x + 45 &&
+                rainDrop.x <= newGame.player.x + 40 &&
                 rainDrop.x >= newGame.player.x + 5
             ) {
-                alert(
-                    `   Game Over\nYour Score Was:\n       ${
-                        document.querySelector(".userScore").innerText
-                    }`
-                );
-                document.location.reload();
+                callModal();
             }
         }
     }
 }
+
+document.querySelector(".modalButton").addEventListener("click", function() {
+    document.location.reload();
+});
 
 function rainAmount() {
     var score = Number(document.querySelector(".userScore").innerText);
