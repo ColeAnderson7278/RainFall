@@ -111,3 +111,8 @@ body {
     color: blue;
     padding-left: 10px;
 }
+
+.instructionText {
+    font-family: "Kranky";
+    color: black;
+}
