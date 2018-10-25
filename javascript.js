@@ -51,6 +51,7 @@ class RainFall {
 }
 
 var newGame = new RainFall(5);
+var interval;
 
 function updatePlayerLocation() {
     var user = document.querySelector(".user");
@@ -88,9 +89,8 @@ function callModal() {
     var finalScore = document.querySelector(".finalScore");
     var userScore = document.querySelector(".userScore").innerText;
     finalScore.innerText = userScore;
-    $("#myModal")
-        .modal("show")
-        .stop();
+    $("#myModal").modal({ backdrop: "static", keyboard: false });
+    $("#myModal").modal("show");
 }
 
 function hitCheck() {
@@ -100,6 +100,7 @@ function hitCheck() {
                 rainDrop.x <= newGame.player.x + 40 &&
                 rainDrop.x >= newGame.player.x + 5
             ) {
+                clearInterval(interval);
                 callModal();
             }
         }
@@ -153,7 +154,7 @@ function tick() {
 function runNewGame() {
     var container = document.querySelector(".gameContainer");
     document.querySelector(".startText").innerHTML = "";
-    setInterval(tick, 30);
+    interval = setInterval(tick, 30);
     container.removeEventListener("click", runNewGame);
 }
 

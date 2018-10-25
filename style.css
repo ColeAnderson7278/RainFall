@@ -95,6 +95,8 @@ body {
 
 .modalButton {
     background-color: blue;
+    font-family: "Kranky";
+    font-size: x-large;
     color: white;
 }
 
