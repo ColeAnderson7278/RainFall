@@ -11,7 +11,7 @@ body {
 .playArea {
     width: 500px;
     height: 500px;
-    background-color: rgb(77, 77, 247);
+    background-color: rgb(83, 83, 180);
     border-style: solid;
     border-width: thick;
     border-color: rgb(188, 236, 54);
@@ -34,7 +34,7 @@ body {
     border-radius: 0px 0px 20px 20px;
     width: 100%;
     height: 100px;
-    background-color: rgb(167, 166, 166);
+    background-color: rgb(150, 149, 149);
 }
 
 .ground {
@@ -42,7 +42,13 @@ body {
     top: 300px;
     width: 100%;
     height: 90px;
-    background-color: green;
+    background-color: rgb(0, 128, 0);
+    border-style: solid;
+    border-width: 5px;
+    border-color: darkgreen;
+    border-left: rgb(0, 128, 0);
+    border-right: rgb(0, 128, 0);
+    border-bottom: rgb(0, 128, 0);
 }
 
 .user {
