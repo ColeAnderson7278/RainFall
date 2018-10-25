@@ -20,6 +20,7 @@ body {
 .rain {
     position: absolute;
     background-color: lightblue;
+    border-radius: 25%;
     width: 5px;
     height: 20px;
 }

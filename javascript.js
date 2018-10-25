@@ -1,6 +1,7 @@
 class RainFall {
-    constructor() {
+    constructor(amount) {
         this.initializePlayer();
+        this.amount = amount;
         this.generateRainDrops();
         this.gameover = false;
     }
@@ -13,7 +14,7 @@ class RainFall {
 
     generateRainDrops() {
         this.rainDrops = [];
-        for (let i = 0; i < 10; i++) {
+        for (let i = 0; i < this.amount; i++) {
             this.generateRainDrop();
         }
     }
@@ -27,13 +28,13 @@ class RainFall {
 
     moveLeft() {
         if (this.player.x > 0) {
-            this.player.x -= 5;
+            this.player.x -= 10;
         }
     }
 
     moveRight() {
         if (this.player.x < 440) {
-            this.player.x += 5;
+            this.player.x += 10;
         }
     }
 
@@ -49,7 +50,7 @@ class RainFall {
     }
 }
 
-var newGame = new RainFall();
+var newGame = new RainFall(5);
 
 function updatePlayerLocation() {
     var user = document.querySelector(".user");
@@ -79,6 +80,7 @@ function updateRain() {
 function dropRain() {
     for (var rainDrop of newGame.rainDrops) {
         rainDrop.y += 5;
+        rainDrop.x += rainDrop.x > newGame.player.x + 20 ? -1 : 1;
     }
 }
 
@@ -86,7 +88,6 @@ function hitCheck() {
     for (var rainDrop of newGame.rainDrops) {
         if (rainDrop.y === 240) {
             if (
-                // console.log(rainDrop.x, newGame.player.x + 20)
                 rainDrop.x <= newGame.player.x + 45 &&
                 rainDrop.x >= newGame.player.x + 5
             ) {
@@ -101,9 +102,27 @@ function hitCheck() {
     }
 }
 
+function rainAmount() {
+    var score = Number(document.querySelector(".userScore").innerText);
+    if (score < 5000) {
+        newGame.amount = 5;
+    } else if (score < 10000) {
+        newGame.amount = 6;
+    } else if (score < 15000) {
+        newGame.amount = 7;
+    } else if (score < 20000) {
+        newGame.amount = 8;
+    } else if (score < 25000) {
+        newGame.amount = 9;
+    } else {
+        newGame.amount = 10;
+    }
+}
+
 function rainCheck() {
     for (var rainDrop of newGame.rainDrops) {
-        if (rainDrop.y === 280) {
+        if (rainDrop.y >= 280) {
+            rainAmount();
             newGame.generateRainDrops();
         }
     }
