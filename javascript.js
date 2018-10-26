@@ -88,6 +88,7 @@ function dropRain() {
 function callModal() {
     var finalScore = document.querySelector(".finalScore");
     var userScore = document.querySelector(".userScore").innerText;
+    finalScoreInput(userScore);
     finalScore.innerText = userScore;
     $("#myModal").modal({ backdrop: "static", keyboard: false });
     $("#myModal").modal("show");
@@ -174,3 +175,16 @@ function getHighScore() {
 }
 
 getHighScore();
+
+function finalScoreInput(score) {
+    document.forms["newScoreForm"].elements["number"].value = score;
+}
+
+function afterSubmit(event) {
+    console.log(event);
+    event.preventDefault();
+    document.location.reload();
+}
+
+var form = document.querySelector("form");
+form.addEventListener("submit", afterSubmit);
