@@ -159,3 +159,7 @@ function runNewGame() {
 }
 
 document.querySelector(".gameContainer").addEventListener("click", runNewGame);
+
+// document.addEventListener("keypress", function(event) {
+//     console.log(event);
+// });
