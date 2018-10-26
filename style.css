@@ -76,7 +76,6 @@ body {
 }
 
 .modal-header {
-    background-color: rgb(243, 243, 158);
     border-color: red;
     display: flex;
     justify-content: center;
@@ -85,26 +84,11 @@ body {
 }
 
 .modal-body {
-    background-color: rgb(243, 243, 158);
     display: flex;
     justify-content: center;
     font-size: x-large;
     font-family: "Kranky";
     font-weight: bold;
-}
-
-.modal-footer {
-    display: flex;
-    justify-content: center;
-    background-color: rgb(243, 243, 158);
-    border-color: rgb(243, 243, 158);
-}
-
-.modalButton {
-    background-color: blue;
-    font-family: "Kranky";
-    font-size: x-large;
-    color: white;
 }
 
 .finalScore {

@@ -158,4 +158,19 @@ function runNewGame() {
     container.removeEventListener("click", runNewGame);
 }
 
+function showHighScore(score) {
+    document.querySelector(".highScoreUsers").innerText =
+        score.name + " " + score.number;
+}
+
 document.querySelector(".gameContainer").addEventListener("click", runNewGame);
+
+function getHighScore() {
+    fetch("http://rainfall-backend.herokuapp.com/high-score", {
+        mode: "cors"
+    })
+        .then(r => r.json())
+        .then(showHighScore);
+}
+
+getHighScore();
