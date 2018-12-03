@@ -58,10 +58,10 @@ function updatePlayerLocation() {
     user.style.left = `${newGame.player.x}px`;
 }
 
-document.addEventListener("keydown", function(event) {
-    if (event.keyCode == 37) {
+document.addEventListener("keypress", function(event) {
+    if (event.key === "ArrowLeft") {
         newGame.moveLeft();
-    } else if (event.keyCode == 39) {
+    } else if (event.key === "ArrowRight") {
         newGame.moveRight();
     }
 });
@@ -88,7 +88,6 @@ function dropRain() {
 function callModal() {
     var finalScore = document.querySelector(".finalScore");
     var userScore = document.querySelector(".userScore").innerText;
-    finalScoreInput(userScore);
     finalScore.innerText = userScore;
     $("#myModal").modal({ backdrop: "static", keyboard: false });
     $("#myModal").modal("show");
@@ -159,32 +158,4 @@ function runNewGame() {
     container.removeEventListener("click", runNewGame);
 }
 
-function showHighScore(score) {
-    document.querySelector(".highScoreUsers").innerText =
-        score.name + " " + score.number;
-}
-
 document.querySelector(".gameContainer").addEventListener("click", runNewGame);
-
-function getHighScore() {
-    fetch("http://rainfall-backend.herokuapp.com/high-score", {
-        mode: "cors"
-    })
-        .then(r => r.json())
-        .then(showHighScore);
-}
-
-getHighScore();
-
-function finalScoreInput(score) {
-    document.forms["newScoreForm"].elements["number"].value = score;
-}
-
-function afterSubmit(event) {
-    console.log(event);
-    event.preventDefault();
-    document.location.reload();
-}
-
-var form = document.querySelector("form");
-form.addEventListener("submit", afterSubmit);
