@@ -58,10 +58,10 @@ function updatePlayerLocation() {
     user.style.left = `${newGame.player.x}px`;
 }
 
-document.addEventListener("keypress", function(event) {
-    if (event.key === "ArrowLeft") {
+document.addEventListener("keydown", function(event) {
+    if (event.keyCode == 37) {
         newGame.moveLeft();
-    } else if (event.key === "ArrowRight") {
+    } else if (event.keyCode == 39) {
         newGame.moveRight();
     }
 });
